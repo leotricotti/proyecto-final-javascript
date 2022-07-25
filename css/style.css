@@ -420,6 +420,15 @@ div::after {
   transform: translateY(-5px);
 }
 
+.btn-disable {
+  opacity: .65;
+  pointer-events: none;
+}
+
+.link-disable {
+  pointer-events: none;
+}
+
 /* Footer */
 
 .footer-container {
