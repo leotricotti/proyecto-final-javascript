@@ -335,6 +335,8 @@ body {
 }
 
 .text {
+  width: 100%;
+  margin: 0 auto; 
   font-family: heading;
   font-size: 1.25rem;
   font-weight: bold;
@@ -526,6 +528,7 @@ div::after {
     justify-content: space-between;
     margin: 0 5rem;
   }
+
 }
 
 @media (min-width: 75rem) {
