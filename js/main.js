@@ -7,25 +7,23 @@ let dinero = new Intl.NumberFormat("es-AR", {
 
 //Menu inicio
 let seleccion = prompt(
-  "Seleccione la operación deseada: \n1) Consulta de saldo  \n2) Depósitos \n3) Extracciones \n4) Salir"
+  "Seleccione la operación deseada: \n1) Consulta de saldo \n2) Depósitos \n3) Extracciones \n4) Salir"
 );
-
-function operar(){
-  return seleccion;
-}
-
-let menu = operar(); 
 
 //Funcion nueva operacion
 function continuar() {
-  let continuo = prompt("Desea resalizar otra operacion? S/N: ");
-  if (continuo == "S" || continuo == "s") {
-    menu
-  } else if (continuo == "n" || continuo == "N") {
+  let continuo = prompt("Desea resalizar otra operacion? S/N: ").toUpperCase();
+  if (continuo == "S") {
+    seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consulta de saldo \n2) Depósitos \n3) Extracciones \n4) Salir"
+    );
+  } else if (continuo == "N") {
     seleccion = "4";
   } else {
     alert("Elija una opción valida");
-    operar();
+    seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consulta de saldo \n2) Depósitos \n3) Extracciones \n4) Salir"
+    );
   }
 }
 
