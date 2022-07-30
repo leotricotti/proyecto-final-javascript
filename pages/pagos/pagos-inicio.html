@@ -7,11 +7,11 @@
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="img/favicon/favicon.png"
+      href="../../img/favicon/favicon.png"
       type="image/x-icon"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
     <!-- Tittle -->
     <title>Simulador cajero automático</title>
   </head>
@@ -22,7 +22,7 @@
       <!-- Header -->
       <header class="header-container">
         <img
-          src="img/logo-header/BancoPatagonia_bco.png"
+          src="../../img/logo-header/BancoPatagonia_bco.png"
           alt="Logo Banco Pataginia"
           class="bank-logo"
         />
@@ -36,7 +36,7 @@
       <!-- Main -->
       <main class="cajero-container">
         <div class="text-container">
-          <p class="text">Selecione la operacion deseada</p>
+          <p class="text">Seleccione el tipo de consulta que desea realizar</p>
         </div>
         <section class="teclado-container">
           <div class="teclado-izquierda">
@@ -45,36 +45,28 @@
                 <a href="#" class="link link-disable">
                   <div class="btn-izquierda btn-disable"></div>
                 </a>
-                <p>
-                  &lt;&lt; -- <br />
-                  Transferencias
-                </p>
               </li>
               <li class="teclas-izquierda">
                 <a href="#" class="link link-disable">
                   <div class="btn-izquierda btn-disable"></div>
                 </a>
-                <p>&lt;&lt; -- Claves</p>
               </li>
               <li class="teclas-izquierda">
-                <a href="#" class="link link-disable">
-                  <div class="btn-izquierda btn-disable"></div>
-                </a>
-                <p>
-                  &lt;&lt; -- <br />
-                  Otras operaciones
-                </p>
-              </li>
-              <li class="teclas-izquierda">
-                <a
-                  href="pages/extracciones/extracciones-cuenta.html"
-                  class="link"
-                >
+                <a href="consulta-movimientos.html" class="link">
                   <div class="btn-izquierda"></div>
                 </a>
                 <p>
                   &lt;&lt; -- <br />
-                  Extracion adelanto
+                  Ultimos pagos
+                </p>
+              </li>
+              <li class="teclas-izquierda">
+                <a href="#" class="link">
+                  <div class="btn-izquierda"></div>
+                </a>
+                <p>
+                  &lt;&lt; -- <br />
+                  Pagos por vencer
                 </p>
               </li>
             </ul>
@@ -82,43 +74,37 @@
           <div class="teclado-derecha">
             <ul class="teclas-container">
               <li class="teclas-derecha">
-                <p>
-                  Depositos <br />
-                  -- &gt;&gt;
-                </p>
-                <a href="pages/depositos/depositos-cuenta.html" class="link">
-                  <div class="btn"></div>
+                <a href="#" class="link link-disable">
+                  <div class="btn btn-disable"></div>
+                </a>
+              </li>
+              <li class="teclas-derecha">
+                <a href="#" class="link link-disable">
+                  <div class="btn btn-disable"></div>
+                </a>
+              </li>
+              <li class="teclas-derecha">
+                <a href="consulta-saldo.html" class="link link-disable">
+                  <div class="btn btn-disable"></div>
                 </a>
               </li>
               <li class="teclas-derecha">
                 <p>
-                  Consultas <br />
-                  -- &gt;&gt;
+                  Menu Principal -- &gt;&gt;
                 </p>
-                <a href="pages/consultas/consultas.html" class="link">
-                  <div class="btn"></div>
-                </a>
-              </li>
-              <li class="teclas-derecha">
-                <p>Pago mis cuentas -- &gt;&gt;</p>
-                <a href="pages/pagos/pagos-inicio.html" class="link">
-                  <div class="btn"></div>
-                </a>
-              </li>
-              <li class="teclas-derecha">
-                <p>Salir -- &gt;&gt;</p>
-                <a href="pages/salir/salir.html" class="link">
+                <a href="../../index.html" class="link">
                   <div class="btn"></div>
                 </a>
               </li>
             </ul>
+            <div class="separador"></div>
           </div>
         </section>
       </main>
       <!-- Footer -->
       <footer class="footer-container">
         <img
-          src="img/footer/BancoPatagonia_bco-600x71.png"
+          src="../../img/footer/BancoPatagonia_bco-600x71.png"
           alt="Logo Banco Patagonia"
         />
       </footer>
@@ -129,6 +115,6 @@
     </div>
 
     <!-- JS -->
-    <!-- <script src="js/main.js"></script> -->
+    <script src="#"></script>
   </body>
 </html>
