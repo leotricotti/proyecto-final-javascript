@@ -417,6 +417,10 @@ div::after {
   letter-spacing: 2px;
 }
 
+.eleccion {
+  padding: 3rem 1rem;
+}
+
 .btn:hover,
 .btn-izquierda:hover {
   transform: translateY(-5px);
