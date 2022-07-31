@@ -1,28 +1,30 @@
-//Ver últimos movimientos
-function Movement(fecha, hora, operacion, monto, saldo) {
-  this.fecha = fecha;
-  this.hora = hora;
-  this.operacion = operacion;
-  this.monto = monto;
-  this.saldo = saldo;
+//Depositos
+class Deposito { 
+  constructor(fecha, hora, operacion, monto, saldo) {
+    this.fecha = fecha;
+    this.hora = hora;
+    this.operacion = operacion;
+    this.monto = monto;
+    this.saldo = saldo;
+  }
 }
 
-//Base datos movimientos
-const movement1 = new Movement(
+//Depositos realizados
+const deposito1 = new Deposito(
   "01/07/2022",
   "15:55",
   "Depósito",
   "$ 15.000.00",
   "$ 125.343.00"
 );
-const movement2 = new Movement(
+const deposito2 = new Deposito(
   "03/07/2022",
   "12:34",
-  "Extracción",
+  "Depósito",
   "$ 30.000.00",
-  "$ 95.343.00"
+  "$ 155.343.00"
 );
-const movement3 = new Movement(
+const deposito3 = new Deposito(
   "05/07/2022",
   "12:18",
   "Depósito",
@@ -30,17 +32,19 @@ const movement3 = new Movement(
   "$ 115.343.00"
 );
 
-//Consultar pagos
-function Payments(fecha, hora, operacion, monto, saldo) {
-  this.fecha = fecha;
-  this.hora = hora;
-  this.operacion = operacion;
-  this.monto = monto;
-  this.saldo = saldo;
+//Pagos
+class Pagos{
+  constructor(fecha, hora, operacion, monto, saldo) {
+    this.fecha = fecha;
+    this.hora = hora;
+    this.operacion = operacion;
+    this.monto = monto;
+    this.saldo = saldo;
+  }
 }
 
-//Pagos
-const pago1 = new Payments(
+//Pagos realizados
+const pago1 = new Pagos(
   "08/07/2022",
   "11:25",
   "Edelap",
@@ -48,7 +52,7 @@ const pago1 = new Payments(
   "$ 130.253.65"
 );
 
-const pago2 = new Payments(
+const pago2 = new Pagos(
   "10/07/2022",
   "10:33",
   "Camuzzi Gas Pampeana",
@@ -56,7 +60,7 @@ const pago2 = new Payments(
   "$ 127.156.65"
 );
 
-const pago3 = new Payments(
+const pago3 = new Pagos(
   "13/07/2022",
   "08:55",
   "ARBA Inmobiliario",
@@ -64,34 +68,36 @@ const pago3 = new Payments(
   "$ 122.165.36"
 );
 
-//Consultar Transferencias
-function Transfer(fecha, hora, operacion, monto, saldo) {
-  this.fecha = fecha;
-  this.hora = hora;
-  this.operacion = operacion;
-  this.monto = monto;
-  this.saldo = saldo;
+//Extracciones
+class Extraccion {
+  constructor(fecha, hora, operacion, monto, saldo) {
+    this.fecha = fecha;
+    this.hora = hora;
+    this.operacion = operacion;
+    this.monto = monto;
+    this.saldo = saldo;
+  }
 }
 
 //Base datos transferencias
-const transfer1 = new Transfer(
+const transfer1 = new Extraccion(
   "14/07/2022",
   "15:55",
-  "Trans. Recibida",
+  "Extracción",
   "$ 15.000.00",
   "$ 125.343.00"
 );
-const transfer2 = new Transfer(
+const transfer2 = new Extraccion(
   "17/07/2022",
   "12:34",
-  "Trans. Enviada ",
+  "Extracción ",
   "$ 30.000.00",
   "$ 95.343.00"
 );
-const transfer3 = new Transfer(
+const transfer3 = new Extraccion(
   "20/07/2022",
   "12:18",
-  "Trans. Recibida",
+  "Extracción",
   "$ 20.000.00",
   "$ 115.343.00"
 );
@@ -119,18 +125,18 @@ function convertir(dinero){
 }
 
 //Menu inicio
-let seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Salir");
+let seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
 
 //Funcion nueva operacion
 function continuar() {
   let continuo = prompt("Desea resalizar otra operacion? S/N: ").toUpperCase();
   if (continuo == "S") {
-    seleccion = prompt ("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Depósitos \n3) Extracciones \n4) Salir");
+    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
   } else if (continuo == "N") {
-    seleccion = "4";
+    seleccion = "5";
   } else {
     alert("Elija una opción valida");
-    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Salir");
+    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
   }
 }
 
@@ -149,26 +155,49 @@ function consultar (op) {
 
 //Función para realizar depositos
 function depositar(op) {
-  op = prompt("Seleccione la operación deseada: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
-  if(op == "1"){   
-    let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
-    saldo = saldo + deposito;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if (op == "2"){
+  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  if(op == "1" || op == "2"){   
     let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
     saldo = saldo + deposito;
     return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
   }else{
     alert("Elija una opcion valida.")
-    op = prompt("Seleccione la operación deseada: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+    op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
   }
 }
 
 //Función para realizar extracciones
-function extraer() {
-  let extraccion = parseInt(prompt("Ingrese el monto que desea extraer: "));
-  saldo = saldo - extraccion;
-  return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+function extraer(op) {
+  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  if(op == "1" || op == "2"){   
+    let extraccion = parseInt(prompt("Ingrese el monto que desea extraer: "));
+    saldo = saldo - extraccion;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else{
+    alert("Elija una opcion valida.")
+    op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  }
+}
+
+//Funcion para realizar pagos
+function pagar(op) {
+  op = prompt("Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Menu Principal");
+  if(op == "1"){   
+    saldo = saldo - 2000;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else if(op == "2"){   
+    saldo = saldo - 1850;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else if(op == "3"){   
+    saldo = saldo - 1325;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else if(op == "4"){   
+    saldo = saldo - 2580;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  } else{
+    alert("Elija una opcion valida.")
+    op = prompt("Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Menu Principal");
+  }
 }
 
 //Función para salir del sistema
@@ -177,7 +206,7 @@ function salir() {
 }
 
 //Programa principal
-while (seleccion != "4") {
+while (seleccion != "5") {
   switch (seleccion) {
     case "1":
       consultar();
@@ -191,6 +220,10 @@ while (seleccion != "4") {
       extraer();
       break;
 
+    case "4":
+      pagar();
+      break;
+    
     case "continuo":
       continuar();
       break;
