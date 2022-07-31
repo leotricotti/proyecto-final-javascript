@@ -1,3 +1,4 @@
+//Base de datos
 //Depositos
 class Deposito { 
   constructor(fecha, hora, operacion, monto, saldo) {
@@ -79,22 +80,22 @@ class Extraccion {
   }
 }
 
-//Base datos transferencias
-const transfer1 = new Extraccion(
+//Extracciones realizadas
+const extracc1 = new Extraccion(
   "14/07/2022",
   "15:55",
   "Extracción",
   "$ 15.000.00",
   "$ 125.343.00"
 );
-const transfer2 = new Extraccion(
+const extracc2 = new Extraccion(
   "17/07/2022",
   "12:34",
   "Extracción ",
   "$ 30.000.00",
   "$ 95.343.00"
 );
-const transfer3 = new Extraccion(
+const extracc3 = new Extraccion(
   "20/07/2022",
   "12:18",
   "Extracción",
@@ -106,13 +107,13 @@ const transfer3 = new Extraccion(
 const pagoServ = [];
 pagoServ.push(pago1, pago2, pago3);
 
-//Creacion array transfererencias
-const transferido = [];
-transferido.push(transfer1, transfer2, transfer3);
+//Creacion array extracciones
+const extraido = [];
+extraido.push(extracc1, extracc2, extracc3);
 
 //Creación array movimientos
-const operaciones = pagoServ.concat(transferido);
-operaciones.unshift(movement1, movement2, movement3);
+const operaciones = pagoServ.concat(extraido);
+operaciones.unshift(deposito1, deposito2, deposito3);
 
 //Saldo inicial
 let saldo = 100000;
