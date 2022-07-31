@@ -1,6 +1,6 @@
 //Base de datos
 //Depositos
-class Deposito { 
+class Operacion { 
   constructor(fecha, hora, operacion, monto, saldo) {
     this.fecha = fecha;
     this.hora = hora;
@@ -11,21 +11,21 @@ class Deposito {
 }
 
 //Depositos realizados
-const deposito1 = new Deposito(
+const deposito1 = new Operacion(
   "01/07/2022",
   "15:55",
   "Depósito",
   "$ 15.000.00",
   "$ 125.343.00"
 );
-const deposito2 = new Deposito(
+const deposito2 = new Operacion(
   "03/07/2022",
   "12:34",
   "Depósito",
   "$ 30.000.00",
   "$ 155.343.00"
 );
-const deposito3 = new Deposito(
+const deposito3 = new Operacion(
   "05/07/2022",
   "12:18",
   "Depósito",
@@ -33,19 +33,8 @@ const deposito3 = new Deposito(
   "$ 115.343.00"
 );
 
-//Pagos
-class Pagos{
-  constructor(fecha, hora, operacion, monto, saldo) {
-    this.fecha = fecha;
-    this.hora = hora;
-    this.operacion = operacion;
-    this.monto = monto;
-    this.saldo = saldo;
-  }
-}
-
 //Pagos realizados
-const pago1 = new Pagos(
+const pago1 = new Operacion(
   "08/07/2022",
   "11:25",
   "Edelap",
@@ -53,7 +42,7 @@ const pago1 = new Pagos(
   "$ 130.253.65"
 );
 
-const pago2 = new Pagos(
+const pago2 = new Operacion(
   "10/07/2022",
   "10:33",
   "Camuzzi Gas Pampeana",
@@ -61,7 +50,7 @@ const pago2 = new Pagos(
   "$ 127.156.65"
 );
 
-const pago3 = new Pagos(
+const pago3 = new Operacion(
   "13/07/2022",
   "08:55",
   "ARBA Inmobiliario",
@@ -69,33 +58,22 @@ const pago3 = new Pagos(
   "$ 122.165.36"
 );
 
-//Extracciones
-class Extraccion {
-  constructor(fecha, hora, operacion, monto, saldo) {
-    this.fecha = fecha;
-    this.hora = hora;
-    this.operacion = operacion;
-    this.monto = monto;
-    this.saldo = saldo;
-  }
-}
-
 //Extracciones realizadas
-const extracc1 = new Extraccion(
+const extracc1 = new Operacion(
   "14/07/2022",
   "15:55",
   "Extracción",
   "$ 15.000.00",
   "$ 125.343.00"
 );
-const extracc2 = new Extraccion(
+const extracc2 = new Operacion(
   "17/07/2022",
   "12:34",
   "Extracción ",
   "$ 30.000.00",
   "$ 95.343.00"
 );
-const extracc3 = new Extraccion(
+const extracc3 = new Operacion(
   "20/07/2022",
   "12:18",
   "Extracción",
@@ -103,17 +81,12 @@ const extracc3 = new Extraccion(
   "$ 115.343.00"
 );
 
-//Creacion array pagos
-const pagoServ = [];
-pagoServ.push(pago1, pago2, pago3);
+//Operaciones
 
-//Creacion array extracciones
-const extraido = [];
-extraido.push(extracc1, extracc2, extracc3);
-
-//Creación array movimientos
-const operaciones = pagoServ.concat(extraido);
-operaciones.unshift(deposito1, deposito2, deposito3);
+const operaciones = [];
+operaciones.push(deposito1, deposito2, deposito3);
+operaciones.push(pago1, pago2, pago3);
+operaciones.push(extracc1, extracc2, extracc3);
 
 //Saldo inicial
 let saldo = 100000;
