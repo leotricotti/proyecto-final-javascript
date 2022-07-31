@@ -1,6 +1,6 @@
 //Base de datos
 //Depositos
-class Operacion { 
+class Operacion {
   constructor(fecha, hora, operacion, monto, saldo) {
     this.fecha = fecha;
     this.hora = hora;
@@ -90,111 +90,159 @@ operaciones.push(extracc1, extracc2, extracc3);
 //Saldo inicial
 let saldo = 100000;
 
-function convertir(dinero){
-  return dinero = new Intl.NumberFormat("es-AR", {
+function convertir(dinero) {
+  return (dinero = new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
-  }).format(saldo);
+  }).format(saldo));
 }
 
 //Menu inicio
-let seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
+let seleccion = prompt(
+  "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+);
 
 //Funcion nueva operacion
 function continuar() {
   let continuo = prompt("Desea resalizar otra operacion? S/N: ").toUpperCase();
   if (continuo == "S") {
-    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
+    seleccion = prompt(
+      "Seleccione una operación: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    );
   } else if (continuo == "N") {
     seleccion = "5";
   } else {
     alert("Elija una opción valida");
-    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
+    seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    );
   }
 }
 
 //Función para consultas
-function consultar (op) {
-  op = prompt("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n3) Menu Principal");
-  if(op == "1"){   
+function consultar(op) {
+  op = prompt(
+    "Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n3) Menu Principal"
+  );
+  if (op == "1") {
     return alert("Su saldo es: " + convertir(saldo));
-  }else if (op == "2"){
+  } else if (op == "2") {
     operaciones.sort((a, b) => {
       if (a.fecha > b.fecha) {
-          return 1;
+        return 1;
       }
       if (a.fecha < b.fecha) {
-          return -1;
+        return -1;
       }
-    })
+    });
     return console.table(operaciones);
-  }else if (op == "3"){
-    return seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
-  }else{
-    alert("Elija una opcion valida.")
-    op = prompt("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n4) Menu Principal");
+  } else if (op == "3") {
+    return (seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    ));
+  } else {
+    alert("Elija una opcion valida.");
+    op = prompt(
+      "Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n4) Menu Principal"
+    );
   }
-};
+}
 
 //Función para realizar depositos
 function depositar(op) {
-  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Depósitos realizados \n4) Menu Principal");
-  if(op == "1" || op == "2"){   
+  op = prompt(
+    "Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Depósitos realizados \n4) Menu Principal"
+  );
+  if (op == "1" || op == "2") {
     let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
     saldo = saldo + deposito;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if (op == "3"){
-    const operado = operaciones.filter ((el) => el.operacion.includes("Depósito"));
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "3") {
+    const operado = operaciones.filter((el) =>
+      el.operacion.includes("Depósito")
+    );
     console.table(operado);
-  }else if (op == "4"){
-    return seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
-  }else{
-    alert("Elija una opcion valida.")
-    op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  } else if (op == "4") {
+    return (seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    ));
+  } else {
+    alert("Elija una opcion valida.");
+    op = prompt(
+      "Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal"
+    );
   }
 }
 
 //Función para realizar extracciones
 function extraer(op) {
-  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Extracciones realizadas \n4) Menu Principal");
-  if(op == "1" || op == "2"){   
+  op = prompt(
+    "Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Extracciones realizadas \n4) Menu Principal"
+  );
+  if (op == "1" || op == "2") {
     let extraccion = parseInt(prompt("Ingrese el monto que desea extraer: "));
     saldo = saldo - extraccion;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if (op == "3"){
-    const operado = operaciones.filter ((el) => el.operacion.includes("Extracción"));
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "3") {
+    const operado = operaciones.filter((el) =>
+      el.operacion.includes("Extracción")
+    );
     console.table(operado);
-  }else if (op == "4"){
-    return seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
-  }else{
-    alert("Elija una opcion valida.")
-    op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  } else if (op == "4") {
+    return (seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    ));
+  } else {
+    alert("Elija una opcion valida.");
+    op = prompt(
+      "Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal"
+    );
   }
 }
 
 //Funcion para realizar pagos
 function pagar(op) {
-  op = prompt("Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Pagos realizados \n6) Menu Principal");
-  if(op == "1"){   
+  op = prompt(
+    "Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Pagos realizados \n6) Menu Principal"
+  );
+  if (op == "1") {
     saldo = saldo - 2000;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if(op == "2"){   
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "2") {
     saldo = saldo - 1850;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if(op == "3"){   
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "3") {
     saldo = saldo - 1325;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if(op == "4"){   
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "4") {
     saldo = saldo - 2580;
-    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
-  }else if (op == "5"){
-    const operado = operaciones.filter ((el) => el.operacion.includes("Pago Servicio"));
+    return alert(
+      "Operación realizada con exíto. \nSu saldo es: " + convertir(saldo)
+    );
+  } else if (op == "5") {
+    const operado = operaciones.filter((el) =>
+      el.operacion.includes("Pago Servicio")
+    );
     console.table(operado);
-  }else if (op == "6"){
-    return seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
-  }else{
-    alert("Elija una opcion valida.")
-    op = prompt("Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Menu Principal");
+  } else if (op == "6") {
+    return (seleccion = prompt(
+      "Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
+    ));
+  } else {
+    alert("Elija una opcion valida.");
+    op = prompt(
+      "Seleccione el servicio que desea abonar: \n1) Edesur \n2) Movistar \n3) Metrogas \n4) AySA \n5) Menu Principal"
+    );
   }
 }
 
@@ -221,7 +269,7 @@ while (seleccion != "5") {
     case "4":
       pagar();
       break;
-    
+
     case "continuo":
       continuar();
       break;
