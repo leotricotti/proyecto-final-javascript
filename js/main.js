@@ -12,21 +12,21 @@ class Operacion {
 
 //Depositos realizados
 const deposito1 = new Operacion(
-  "01/07/2022",
+  "08/07/2022",
   "15:55",
   "Depósito",
   "$ 15.000.00",
   "$ 125.343.00"
 );
 const deposito2 = new Operacion(
-  "03/07/2022",
+  "17/07/2022",
   "12:34",
   "Depósito",
   "$ 30.000.00",
   "$ 155.343.00"
 );
 const deposito3 = new Operacion(
-  "05/07/2022",
+  "10/07/2022",
   "12:18",
   "Depósito",
   "$ 20.000.00",
@@ -35,7 +35,7 @@ const deposito3 = new Operacion(
 
 //Pagos realizados
 const pago1 = new Operacion(
-  "08/07/2022",
+  "01/07/2022",
   "11:25",
   "Pago Servicio",
   "$ 2.572.27",
@@ -43,7 +43,7 @@ const pago1 = new Operacion(
 );
 
 const pago2 = new Operacion(
-  "10/07/2022",
+  "05/07/2022",
   "10:33",
   "Pago Servicio",
   "$ 5.362.87",
@@ -51,7 +51,7 @@ const pago2 = new Operacion(
 );
 
 const pago3 = new Operacion(
-  "13/07/2022",
+  "17/07/2022",
   "08:55",
   "Pago Servicio",
   "$ 1.942.63",
@@ -67,9 +67,9 @@ const extracc1 = new Operacion(
   "$ 125.343.00"
 );
 const extracc2 = new Operacion(
-  "17/07/2022",
+  "03/07/2022",
   "12:34",
-  "Extracción ",
+  "Extracción",
   "$ 30.000.00",
   "$ 95.343.00"
 );
@@ -119,6 +119,14 @@ function consultar (op) {
   if(op == "1"){   
     return alert("Su saldo es: " + convertir(saldo));
   }else if (op == "2"){
+    operaciones.sort((a, b) => {
+      if (a.fecha > b.fecha) {
+          return 1;
+      }
+      if (a.fecha < b.fecha) {
+          return -1;
+      }
+    })
     return console.table(operaciones);
   }else if (op == "3"){
     return seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir");
@@ -130,7 +138,7 @@ function consultar (op) {
 
 //Función para realizar depositos
 function depositar(op) {
-  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Depositos realizados \n4) Menu Principal");
+  op = prompt("Seleccione la cuenta para operar: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Depósitos realizados \n4) Menu Principal");
   if(op == "1" || op == "2"){   
     let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
     saldo = saldo + deposito;
