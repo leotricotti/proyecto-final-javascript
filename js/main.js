@@ -130,13 +130,13 @@ function continuar() {
     seleccion = "4";
   } else {
     alert("Elija una opción valida");
-    seleccion = prompt ("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Depósitos \n3) Extracciones \n4) Salir");
+    seleccion = prompt ("Seleccione la operación deseada: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Salir");
   }
 }
 
 //Función para consultas
 function consultar (op) {
-  op = prompt("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n4) Menu Principal");
+  op = prompt("Seleccione la operación deseada: \n1) Consulta de saldo \n2) Ultimos movimientos \n3) Menu Principal");
   if(op == "1"){   
     return alert("Su saldo es: " + convertir(saldo));
   }else if (op == "2"){
@@ -148,10 +148,20 @@ function consultar (op) {
 };
 
 //Función para realizar depositos
-function depositar() {
-  let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
-  saldo = saldo + deposito;
-  return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+function depositar(op) {
+  op = prompt("Seleccione la operación deseada: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  if(op == "1"){   
+    let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
+    saldo = saldo + deposito;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else if (op == "2"){
+    let deposito = parseFloat(prompt("Ingrese el monto que desea depósitar: "));
+    saldo = saldo + deposito;
+    return alert("Operación realizada con exíto. \nSu saldo es: " + convertir(saldo));
+  }else{
+    alert("Elija una opcion valida.")
+    op = prompt("Seleccione la operación deseada: \n1) Cta. Cte. en pesos \n2) Caja de ahorro en pesos \n3) Menu Principal");
+  }
 }
 
 //Función para realizar extracciones
