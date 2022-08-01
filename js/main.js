@@ -90,6 +90,7 @@ operaciones.push(extracc1, extracc2, extracc3);
 //Saldo inicial
 let saldo = 100000;
 
+//Pasar saldo a dinero
 function convertir(dinero) {
   return (dinero = new Intl.NumberFormat("es-AR", {
     style: "currency",
@@ -103,8 +104,8 @@ let seleccion = prompt(
 );
 
 //Funcion nueva operacion
-function continuar() {
-  let continuo = prompt("Desea resalizar otra operacion? S/N: ").toUpperCase();
+function continuar(continuo) {
+  continuo = prompt("Desea resalizar otra operacion? S/N: ").toUpperCase();
   if (continuo == "S") {
     seleccion = prompt(
       "Seleccione una operación: \n1) Consultas \n2) Depósitos \n3) Extracciones \n4) Pagos \n5) Salir"
